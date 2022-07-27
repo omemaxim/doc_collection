@@ -27,7 +27,8 @@ def extract():
     installed_packages = pkg_resources.working_set
     installed_packages_list = sorted(["%s" % i.key for i in installed_packages])
 
-    installed_packages_list.remove('transformers')
+    if installed_packages_list.count('transformers'):
+        installed_packages_list.remove('transformers')
 
     unsolved_package_names = ['beautifulsoup4', 'typing-extensions', 'pyyaml', 'argon2-cffi', 'jupyter-client', 'jupyter-core']
     unsolved_import_names = ['bs4', 'typing', 'yaml', 'argon2', 'jupyter_client', 'jupyter_core']
