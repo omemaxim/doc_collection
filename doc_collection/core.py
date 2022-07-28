@@ -17,7 +17,6 @@ import warnings
 import pydoc
 from pathlib import Path
 from elasticsearch import Elasticsearch, helpers
-from requests.exceptions import ConnectionError
 
 # Cell
 def replace(list_, str1, str2):
