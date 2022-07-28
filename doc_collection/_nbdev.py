@@ -2,9 +2,15 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"get_top_hundred": "00_core.ipynb",
+index = {"replace": "00_core.ipynb",
+         "get_top_hundred": "00_core.ipynb",
          "pip_top_hundred": "00_core.ipynb",
-         "extract": "00_core.ipynb"}
+         "val": "00_core.ipynb",
+         "extr": "00_core.ipynb",
+         "recclass": "00_core.ipynb",
+         "fullname": "00_core.ipynb",
+         "extract": "00_core.ipynb",
+         "es_add_bulk": "00_core.ipynb"}
 
 modules = ["core.py"]
 
