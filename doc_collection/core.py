@@ -35,7 +35,6 @@ def get_top_hundred():
 
 # Cell
 def pip_top_hundred():
-    import os
     lib_names = get_top_hundred()
     lib_names = replace(lib_names, 'msrest', 'msrestazure')
     for lib_name in lib_names:
@@ -108,7 +107,6 @@ def recclass(cl, path):
                 paths.extend(finded_paths)
 
     return names, texts, paths
-
 
 # Cell
 def fullname(o):

@@ -11,13 +11,13 @@ PS, not working yet. Use git clone
 
 Firstly, you need to pip list of packages to be able to collect data from it:
 
-```python
+```
 pip_top_hundred()
 ```
 
 Now you are ready to extract data from all libs you've pipped and it's dependencies:
 
-```python
+```
 extract()
 ```
 
@@ -26,7 +26,7 @@ Command above will return DataFrame of three columns: __text__ contains document
 # Elasticsearch
 To create index and load mentioned dataframe to elastic  
 
-```python
+```
 es_add_bulk(extract())
 ```
 
