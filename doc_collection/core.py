@@ -195,34 +195,37 @@ def extract():
 # Cell
 def es_add_bulk(d):
 
-    es = Elasticsearch('http://localhost:9200')
+    try:
+        es = Elasticsearch('http://localhost:9200')
 
-    request_body = {
-        "settings": {
-            "analysis": {
-                "analyzer": {
-                    "my_english_analyzer": {
-                        "type": "standard",
-                        "max_token_length": 5,
-                        "stopwords": "_english_"
+        request_body = {
+            "settings": {
+                "analysis": {
+                    "analyzer": {
+                        "my_english_analyzer": {
+                            "type": "standard",
+                            "max_token_length": 5,
+                            "stopwords": "_english_"
+                        }
                     }
                 }
             }
         }
-    }
 
-    if es.indices.exists(index="doc"):
-        es.indices.delete(index='doc')
+        if es.indices.exists(index="doc"):
+            es.indices.delete(index='doc')
 
-    es.indices.create(index='doc', body=request_body)
+        es.indices.create(index='doc', body=request_body)
 
-    k = ({
-            "_index": "doc",
-            "text": text,
-            "paths": paths,
-            "library": library
-         } for text, paths, library in d)
+        k = ({
+                "_index": "doc",
+                "text": text,
+                "paths": paths,
+                "library": library
+             } for text, paths, library in d)
 
-    helpers.bulk(es, k)
+        helpers.bulk(es, k)
 
-    print("success!")
+        print("success!")
+    except ConnectionError:
+        print("connection error occured")
