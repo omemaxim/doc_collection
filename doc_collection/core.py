@@ -16,7 +16,8 @@ import pandas
 import warnings
 import pydoc
 from pathlib import Path
-from elasticsearch import Elasticsearch
+from elasticsearch import Elasticsearch, helpers
+from requests.exceptions import ConnectionError
 
 # Cell
 def replace(list_, str1, str2):
@@ -181,7 +182,7 @@ def extract():
                         texts.extend(finded_texts)
                         paths.extend(finded_paths)
 
-                        print(len(names) - c, 'files from', name, 'added to')
+                        print(len(names) - c, 'objects from', name, 'was found and added to dataframe')
                         c = len(names)
 
             except Exception:
@@ -219,13 +220,13 @@ def es_add_bulk(d):
 
         k = ({
                 "_index": "doc",
-                "text": text,
-                "paths": paths,
-                "library": library
-             } for text, paths, library in d)
+                "text": text[i],
+                "paths": paths[i],
+                "library": library[i]
+             } for i in d.index)
 
         helpers.bulk(es, k)
 
         print("success!")
-    except ConnectionError:
-        print("connection error occured")
+    except Exception as e:
+        print("error", e, "occured")
