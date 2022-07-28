@@ -193,9 +193,7 @@ def extract():
     return d
 
 # Cell
-def es_add_bulk():
-
-    d = extract()
+def es_add_bulk(d):
 
     es = Elasticsearch('http://localhost:9200')
 
