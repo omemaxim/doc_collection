@@ -27,7 +27,7 @@ Command above will return DataFrame of three columns: __text__ contains document
 To create index and load mentioned dataframe to elastic  
 
 ```
-# es_add_bulk(extract()) - !!! Commented only to pass tests. Don't pay attention
+# es_add_bulk(extract()) - !!! Commented only to pass tests. Don't pay attantion
 ```
 
 The index's is __doc__ and other fields are like in dataframe.

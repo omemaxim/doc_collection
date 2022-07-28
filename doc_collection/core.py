@@ -225,4 +225,14 @@ def es_add_bulk(d):
 
     es.indices.create(index='doc', body=settings)
 
-    index_batch([d[i] for i in d.index])
+    requests = []
+    for i in docs.index:
+        request = {}
+        request["_op_type"] = "index"
+        request["_index"] = 'doc'
+        request["text"] = docs.text[i]
+        request["paths"] = ' '.join(docs.paths[i])
+        request["library"] = docs.library[i]
+        requests.append(request)
+
+    helpers.bulk(es, requests)
