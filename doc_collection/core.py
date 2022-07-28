@@ -194,38 +194,35 @@ def extract():
 
 # Cell
 def es_add_bulk(d):
+    es = Elasticsearch('http://localhost:9200')
 
-    try:
-        es = Elasticsearch('http://localhost:9200')
-
-        request_body = {
-            "settings": {
-                "analysis": {
-                    "analyzer": {
-                        "my_english_analyzer": {
-                            "type": "standard",
-                            "max_token_length": 5,
-                            "stopwords": "_english_"
-                        }
-                    }
+    settings = {
+        "settings": {
+            "number_of_shards": 2,
+            "number_of_replicas": 1
+        },
+        "mappings": {
+            "dynamic": "true",
+            "_source": {
+            "enabled": "true"
+            },
+            "properties": {
+                "text": {
+                    "type": "text"
+                },
+                "paths": {
+                    "type": "text"
+                },
+                "library": {
+                    "type": "text"
                 }
             }
         }
+    }
 
-        if es.indices.exists(index="doc"):
-            es.indices.delete(index='doc')
+    if es.indices.exists(index="doc"):
+        es.indices.delete(index='doc')
 
-        es.indices.create(index='doc', body=request_body)
+    es.indices.create(index='doc', body=settings)
 
-        k = ({
-                "_index": "doc",
-                "text": text[i],
-                "paths": paths[i],
-                "library": library[i]
-             } for i in d.index)
-
-        helpers.bulk(es, k)
-
-        print("success!")
-    except Exception as e:
-        print("error", e, "occured")
+    index_batch([d[i] for i in d.index])
