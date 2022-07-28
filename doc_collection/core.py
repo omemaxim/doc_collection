@@ -148,8 +148,9 @@ def extract():
     unsolved_package_names = ['beautifulsoup4', 'typing-extensions', 'pyyaml', 'argon2-cffi', 'jupyter-client', 'jupyter-core']
     unsolved_import_names = ['bs4', 'typing', 'yaml', 'argon2', 'jupyter_client', 'jupyter_core']
 
-    for i in range(len(unsolved_package_names)):
-        installed_packages_list = replace(installed_packages_list, unsolved_package_names[i], unsolved_import_names[i])
+    for i in range(len(unsolved_package_names)): #libs which I cant do general way
+        if installed_packages_list.count(unsolved_package_names[i]):
+            installed_packages_list = replace(installed_packages_list, unsolved_package_names[i], unsolved_import_names[i])
 
     names = []
     texts = []
