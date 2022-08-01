@@ -164,7 +164,6 @@ def extract():
     texts = []
     paths = []
 
-    c = 0
     for lib_name in installed_packages_list:
         try:
             importlib.import_module(lib_name)
@@ -173,9 +172,6 @@ def extract():
             names.extend(finded_names)
             texts.extend(finded_texts)
             paths.extend(finded_paths)
-
-            print(len(names) - c, 'objects from', lib_name, 'was found and added to dataframe')
-            c = len(names)
 
         except Exception:
             try:
@@ -188,9 +184,6 @@ def extract():
                         names.extend(finded_names)
                         texts.extend(finded_texts)
                         paths.extend(finded_paths)
-
-                        print(len(names) - c, 'objects from', name, 'was found and added to dataframe')
-                        c = len(names)
 
             except Exception:
                 print('--------------- error during ' + lib_name + ' documentation extracting')
