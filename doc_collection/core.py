@@ -189,7 +189,7 @@ def extract():
                 print('--------------- error during ' + lib_name + ' documentation extracting')
 
     doc = pandas.DataFrame({'text': texts, 'path': paths})
-    doc_wo_dupl = doc.drop_duplicates(subset=['text'])
+    doc_wo_dupl = doc.drop_duplicates(subset=['path'])
     d = doc_wo_dupl.groupby('text').agg(paths = ('path', lambda x: list(x)), #all names
                                         library = ('path', lambda x: list(x)[0].split('.')[0]), #library
                                         name = ('path', lambda x: min(list(x), key=len)) #probably proper name
