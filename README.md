@@ -49,6 +49,7 @@ extract()
       <th>text</th>
       <th>paths</th>
       <th>library</th>
+      <th>name</th>
     </tr>
   </thead>
   <tbody>
@@ -57,75 +58,86 @@ extract()
       <td>Python Library Documentation: Any in module tr...</td>
       <td>[ipykernel.comm.Comm.log]</td>
       <td>ipykernel</td>
+      <td>ipykernel.comm.Comm.log</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Python Library Documentation: AxisProperty\n\n...</td>
       <td>[pandas.DataFrame.columns]</td>
       <td>pandas</td>
+      <td>pandas.DataFrame.columns</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Python Library Documentation: AxisProperty\n\n...</td>
       <td>[pandas.Series.index]</td>
       <td>pandas</td>
+      <td>pandas.Series.index</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Python Library Documentation: AxisProperty\n\n...</td>
       <td>[pandas.DataFrame.index]</td>
       <td>pandas</td>
+      <td>pandas.DataFrame.index</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Python Library Documentation: Bool in module o...</td>
       <td>[openpyxl.chart.AreaChart.roundedCorners]</td>
       <td>openpyxl</td>
+      <td>openpyxl.chart.AreaChart.roundedCorners</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>30673</th>
+      <th>31263</th>
       <td>Python Library Documentation: property\n\n    ...</td>
       <td>[faiss.BufferList.wp]</td>
       <td>faiss</td>
+      <td>faiss.BufferList.wp</td>
     </tr>
     <tr>
-      <th>30674</th>
+      <th>31264</th>
       <td>Python Library Documentation: reify\n\n</td>
       <td>[aiohttp.ClientResponse.content_disposition]</td>
       <td>aiohttp</td>
+      <td>aiohttp.ClientResponse.content_disposition</td>
     </tr>
     <tr>
-      <th>30675</th>
+      <th>31265</th>
       <td>Python Library Documentation: reify\n\n    A s...</td>
       <td>[aiohttp.ClientResponse.history]</td>
       <td>aiohttp</td>
+      <td>aiohttp.ClientResponse.history</td>
     </tr>
     <tr>
-      <th>30676</th>
+      <th>31266</th>
       <td>Python Library Documentation: reify\n\n    Ret...</td>
       <td>[aiohttp.BodyPartReader.filename]</td>
       <td>aiohttp</td>
+      <td>aiohttp.BodyPartReader.filename</td>
     </tr>
     <tr>
-      <th>30677</th>
+      <th>31267</th>
       <td>Python Library Documentation: reify\n\n    Ret...</td>
       <td>[aiohttp.BodyPartReader.name]</td>
       <td>aiohttp</td>
+      <td>aiohttp.BodyPartReader.name</td>
     </tr>
   </tbody>
 </table>
-<p>30678 rows × 3 columns</p>
+<p>31268 rows × 4 columns</p>
 </div>
 
 
 
-Command above will return DataFrame of three columns: __text__ contains documentation of an object, __paths__ contains all names of an object (can be more than one) and __library__ contains library of an object.
+Command above will return DataFrame of four columns: __text__ contains documentation of an object, __paths__ contains all names of an object (can be more than one), __name__ contains the shortest name and __library__ contains library of an object.
 
 # Elasticsearch 
 ## !!! 8.3.2 version of elastic was used

@@ -190,7 +190,10 @@ def extract():
 
     doc = pandas.DataFrame({'text': texts, 'path': paths})
     doc_wo_dupl = doc.drop_duplicates(subset=['text'])
-    d = doc_wo_dupl.groupby('text').agg(paths = ('path', lambda x: list(x)), library = ('path', lambda x: list(x)[0].split('.')[0])).reset_index()
+    d = doc_wo_dupl.groupby('text').agg(paths = ('path', lambda x: list(x)), #all names
+                                        library = ('path', lambda x: list(x)[0].split('.')[0]), #library
+                                        name = ('path', lambda x: min(list(x), key=len)) #probably proper name
+                                       ).reset_index()
     return d
 
 # Cell
@@ -218,6 +221,9 @@ def es_add_bulk(d):
                     },
                     "library": {
                         "type": "text"
+                    },
+                    "name": {
+                        "type": "text"
                     }
                 }
             }
@@ -228,7 +234,13 @@ def es_add_bulk(d):
 
         es.indices.create(index='doc', body=settings)
 
-        k = ({'_index': 'doc', 'text': d.text[i], 'paths': d.paths[i], 'library': d.library[i]} for i in d.index)
+        k = ({'_index': 'doc',
+              '_id': i,
+              'text': d.text[i],
+              'paths': d.paths[i],
+              'library': d.library[i],
+              'name': d.name[i]} for i in d.index)
+
         helpers.bulk(es, k)
 
     except Exception as e:
