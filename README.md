@@ -2,6 +2,10 @@
 > A tool for collecting documentation of python libs.
 
 
+```python
+from doc_collection.core import *
+```
+
 ## Install
 
 
