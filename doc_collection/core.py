@@ -16,7 +16,6 @@ import pandas
 import warnings
 import pydoc
 from pathlib import Path
-from elasticsearch import Elasticsearch, helpers
 import distutils.sysconfig as sysconfig
 
 # Cell
