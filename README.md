@@ -15,14 +15,14 @@ Firstly, you need to pip list of packages to be able to collect data from it:
 pip_top_hundred()
 ```
 
-Now you are ready to extract data from all libs you've pipped and it's dependencies:
+Now you are ready to extract data from all libs you have in your Python (where are can be some exceptions):
 
 ```python
 extract()
 ```
 
-    --------------- error during tensorflow-io-gcs-filesystem documentation extracting
-    --------------- error during theano documentation extracting
+    --------------- exception during tensorflow-io-gcs-filesystem documentation extracting
+    --------------- exception during theano documentation extracting
 
 
 
@@ -47,228 +47,82 @@ extract()
     <tr style="text-align: right;">
       <th></th>
       <th>text</th>
-      <th>paths</th>
-      <th>library</th>
       <th>name</th>
+      <th>library</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Python Library Documentation: Any in module tr...</td>
-      <td>[ipykernel.comm.Comm.log, ipykernel.comm.CommM...</td>
-      <td>ipykernel</td>
-      <td>ipywidgets.fixed.value</td>
+      <td>pandas.DataFrame.columns. AxisProperty\n\n    ...</td>
+      <td>pandas.DataFrame.columns</td>
+      <td>pandas</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.DataFrame.columns]</td>
+      <td>pandas.Series.index. AxisProperty\n\n    The i...</td>
+      <td>pandas.Series.index</td>
       <td>pandas</td>
-      <td>pandas.DataFrame.columns</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.Series.index]</td>
+      <td>pandas.DataFrame.index. AxisProperty\n\n    Th...</td>
+      <td>pandas.DataFrame.index</td>
       <td>pandas</td>
-      <td>pandas.Series.index</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.DataFrame.index]</td>
-      <td>pandas</td>
-      <td>pandas.DataFrame.index</td>
+      <td>ipykernel.comm.Comm.topic. Bytes in module tra...</td>
+      <td>ipykernel.comm.Comm.topic</td>
+      <td>ipykernel</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Python Library Documentation: Bool in module o...</td>
-      <td>[openpyxl.chart.AreaChart.roundedCorners, open...</td>
-      <td>openpyxl</td>
-      <td>openpyxl.styles.Color.auto</td>
+      <td>ipywidgets.Audio.value. Bytes in module traitl...</td>
+      <td>ipywidgets.Audio.value</td>
+      <td>ipykernel</td>
     </tr>
     <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>31263</th>
-      <td>Python Library Documentation: property\n\n    ...</td>
-      <td>[faiss.BufferList.wp, faiss.RangeSearchPartial...</td>
-      <td>faiss</td>
-      <td>faiss.BufferList.wp</td>
-    </tr>
-    <tr>
-      <th>31264</th>
-      <td>Python Library Documentation: reify\n\n</td>
-      <td>[aiohttp.ClientResponse.content_disposition, a...</td>
-      <td>aiohttp</td>
+      <th>56399</th>
+      <td>aiohttp.ClientResponse.url. reify\n\n</td>
       <td>aiohttp.ClientResponse.url</td>
+      <td>aiohttp</td>
     </tr>
     <tr>
-      <th>31265</th>
-      <td>Python Library Documentation: reify\n\n    A s...</td>
-      <td>[aiohttp.ClientResponse.history]</td>
+      <th>56400</th>
+      <td>aiohttp.ClientResponse.url_obj. reify\n\n</td>
+      <td>aiohttp.ClientResponse.url_obj</td>
       <td>aiohttp</td>
+    </tr>
+    <tr>
+      <th>56401</th>
+      <td>aiohttp.ClientResponse.history. reify\n\n    A...</td>
       <td>aiohttp.ClientResponse.history</td>
+      <td>aiohttp</td>
     </tr>
     <tr>
-      <th>31266</th>
-      <td>Python Library Documentation: reify\n\n    Ret...</td>
-      <td>[aiohttp.BodyPartReader.filename]</td>
-      <td>aiohttp</td>
+      <th>56402</th>
+      <td>aiohttp.BodyPartReader.filename. reify\n\n    ...</td>
       <td>aiohttp.BodyPartReader.filename</td>
+      <td>aiohttp</td>
     </tr>
     <tr>
-      <th>31267</th>
-      <td>Python Library Documentation: reify\n\n    Ret...</td>
-      <td>[aiohttp.BodyPartReader.name]</td>
-      <td>aiohttp</td>
+      <th>56403</th>
+      <td>aiohttp.BodyPartReader.name. reify\n\n    Retu...</td>
       <td>aiohttp.BodyPartReader.name</td>
+      <td>aiohttp</td>
     </tr>
   </tbody>
 </table>
-<p>31268 rows × 4 columns</p>
+<p>56404 rows × 3 columns</p>
 </div>
 
 
 
-Command above will return DataFrame of four columns: __text__ contains documentation of an object, __paths__ contains all names of an object (can be more than one), __name__ contains the shortest name and __library__ contains library of an object.
-
-# Elasticsearch 
-
-To create index and load mentioned dataframe to elastic. 
-
-```python
-# es_add_bulk(extract()) - !!! Commented only to pass tests (tester does not have elastic program). Don't pay attantion
-```
-
-The index's name is __doc__ and other fields are the same as in dataframe.
-
-```python
-d = extract()
-```
-
-    --------------- error during tensorflow-io-gcs-filesystem documentation extracting
-    --------------- error during theano documentation extracting
-
-
-```python
-d
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>text</th>
-      <th>paths</th>
-      <th>library</th>
-      <th>name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Python Library Documentation: Any in module tr...</td>
-      <td>[ipykernel.comm.Comm.log, ipykernel.comm.CommM...</td>
-      <td>ipykernel</td>
-      <td>ipywidgets.fixed.value</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.DataFrame.columns]</td>
-      <td>pandas</td>
-      <td>pandas.DataFrame.columns</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.Series.index]</td>
-      <td>pandas</td>
-      <td>pandas.Series.index</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Python Library Documentation: AxisProperty\n\n...</td>
-      <td>[pandas.DataFrame.index]</td>
-      <td>pandas</td>
-      <td>pandas.DataFrame.index</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Python Library Documentation: Bool in module o...</td>
-      <td>[openpyxl.chart.AreaChart.roundedCorners, open...</td>
-      <td>openpyxl</td>
-      <td>openpyxl.styles.Color.auto</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>31263</th>
-      <td>Python Library Documentation: property\n\n    ...</td>
-      <td>[faiss.BufferList.wp, faiss.RangeSearchPartial...</td>
-      <td>faiss</td>
-      <td>faiss.BufferList.wp</td>
-    </tr>
-    <tr>
-      <th>31264</th>
-      <td>Python Library Documentation: reify\n\n</td>
-      <td>[aiohttp.ClientResponse.content_disposition, a...</td>
-      <td>aiohttp</td>
-      <td>aiohttp.ClientResponse.url</td>
-    </tr>
-    <tr>
-      <th>31265</th>
-      <td>Python Library Documentation: reify\n\n    A s...</td>
-      <td>[aiohttp.ClientResponse.history]</td>
-      <td>aiohttp</td>
-      <td>aiohttp.ClientResponse.history</td>
-    </tr>
-    <tr>
-      <th>31266</th>
-      <td>Python Library Documentation: reify\n\n    Ret...</td>
-      <td>[aiohttp.BodyPartReader.filename]</td>
-      <td>aiohttp</td>
-      <td>aiohttp.BodyPartReader.filename</td>
-    </tr>
-    <tr>
-      <th>31267</th>
-      <td>Python Library Documentation: reify\n\n    Ret...</td>
-      <td>[aiohttp.BodyPartReader.name]</td>
-      <td>aiohttp</td>
-      <td>aiohttp.BodyPartReader.name</td>
-    </tr>
-  </tbody>
-</table>
-<p>31268 rows × 4 columns</p>
-</div>
-
-
+Command above will return DataFrame of three columns: __text__ contains documentation of an object, __name__ contains the name and __library__ contains library of an object.

@@ -9,8 +9,11 @@ index = {"replace": "00_core.ipynb",
          "extr": "00_core.ipynb",
          "recclass": "00_core.ipynb",
          "fullname": "00_core.ipynb",
-         "extract": "00_core.ipynb",
-         "es_add_bulk": "00_core.ipynb"}
+         "is_parent": "00_core.ipynb",
+         "is_base": "00_core.ipynb",
+         "cut_names": "00_core.ipynb",
+         "cut": "00_core.ipynb",
+         "extract": "00_core.ipynb"}
 
 modules = ["core.py"]
 
