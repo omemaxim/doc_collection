@@ -13,9 +13,16 @@ index = {"replace": "00_core.ipynb",
          "is_base": "00_core.ipynb",
          "cut_names": "00_core.ipynb",
          "cut": "00_core.ipynb",
-         "extract": "00_core.ipynb"}
+         "create_df": "00_core.ipynb",
+         "extract": "00_core.ipynb",
+         "extract_one": "00_core.ipynb",
+         "index_data": "00_search.ipynb",
+         "index_batch": "00_search.ipynb",
+         "embed_text": "00_search.ipynb",
+         "query": "00_search.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "search.py"]
 
 doc_url = "https://omemaxim.github.io/doc_collection/"
 

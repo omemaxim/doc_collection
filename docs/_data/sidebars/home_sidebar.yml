@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: doc_collection
-      url: core.html
+      title: Title
+      url: search.html
     output: web
     title: doc_collection
   output: web
