@@ -246,7 +246,7 @@ A tool uses __ElasticSearch__ to store and search data, __sentence_transformers_
 Make sure you initialised __elasticsearch__ and sequence2vec model like below
 
 ```python
-es = Elasticsearch('localhost:9200')
+es = Elasticsearch('https://localhost:9200')
 
 model_name = 'sentence-transformers/all-mpnet-base-v2'
 model = SentenceTransformer(model_name)
