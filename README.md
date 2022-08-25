@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Every well-maintained PyPi module has documentation in it's source. This tool provides functionality to collect, store and search in that documentation. You can either collect documentation of one specific library or documentation of all packages you've pipped at once.
+Every well-maintained PyPi module has documentation in it's source. This tool provides functionality to collect, store and search in that documentation. 
 
 # How to use
 
@@ -117,7 +117,7 @@ extract_one('pandas')
 
 
 
-Function above returns datafrane of two columns: __text__ column contains documentation and __name__ column contains name of  corresponding method/class/etc
+Function above returns dataframe of two columns: __text__ column contains documentation and __name__ column contains name of  corresponding method/class/etc
 
 ### All libraries at once
 
@@ -237,6 +237,25 @@ extract()
 
 Command above will return DataFrame of three columns: __text__ contains documentation of an object, __name__ contains the name and __library__ contains library of an object.
 
+### Enrichment of python
+
+Want to create a huge dataframe of documentation but don't have enough installed packages? This section is for you! ``pip_top_n`` function is able to pip top __n__ popular packages from [this website](https://hugovk.github.io/top-pypi-packages/). For example, let's pip top 5 pachages:
+
+```python
+from doc_collection.core import pip_top_n
+```
+
+```python
+pip_top_n(5)
+```
+
+    boto3 was successfully pipped
+    botocore was successfully pipped
+    urllib3 was successfully pipped
+    setuptools was successfully pipped
+    requests was successfully pipped
+
+
 ## 2. Storing
 
 A tool uses __ElasticSearch__ to store and search data, __sentence_transformers__ library to calculate embeddings for better search quallity.
@@ -257,11 +276,11 @@ model = SentenceTransformer(model_name)
 There are function to create index and index data from dataframe mentioned above:
 
 ```python
-doc_collection.search import index_data
+from doc_collection.search import index_data
 ```
 
 ```python
-# index_data(d, es, INDEX_NAME='my_index_name', BATCH_SIZE=5000)
+# index_data(d, es, model)
 ```
 
 ### Search
@@ -274,13 +293,13 @@ There are several ways to present data that was found.
 Query with following signature returns raw elasticsearch response:
 
 ```python
-# query(text, size, es, model, INDEX_NAME)
+# query(text, size, es, model)
 ```
 
 By specifying ``field`` parameter into __name__, you can get only names of methods.
 
 ```python
-# query(text='How to drop a column of dataframe?', size=10, es=es, model=model, INDEX_NAME='bert', field='name')
+# query(text='How to drop a column of dataframe?', size=10, es=es, model=model, field='name')
 ```
 
 
@@ -302,7 +321,7 @@ By specifying ``field`` parameter into __name__, you can get only names of metho
 By spicifying ``field`` parameter into __text__, you'll be able to get documentation:
 
 ```python
-# print(query(text='How to drop a column of dataframe?', size=1, es=es, model=model, INDEX_NAME='bert', field='text')[0])
+# print(query(text='How to drop a column of dataframe?', size=1, es=es, model=model, field='text')[0])
 ```
 
     pandas.DataFrame.drop. function drop in module pandas.core.frame

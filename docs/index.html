@@ -50,7 +50,7 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Every well-maintained PyPi module has documentation in it's source. This tool provides functionality to collect, store and search in that documentation. You can either collect documentation of one specific library or documentation of all packages you've pipped at once.</p>
+<p>Every well-maintained PyPi module has documentation in it's source. This tool provides functionality to collect, store and search in that documentation.</p>
 
 </div>
 </div>
@@ -217,7 +217,7 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Function above returns datafrane of two columns: <strong>text</strong> column contains documentation and <strong>name</strong> column contains name of  corresponding method/class/etc</p>
+<p>Function above returns dataframe of two columns: <strong>text</strong> column contains documentation and <strong>name</strong> column contains name of  corresponding method/class/etc</p>
 
 </div>
 </div>
@@ -393,6 +393,71 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Enrichment-of-python">Enrichment of python<a class="anchor-link" href="#Enrichment-of-python"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Want to create a huge dataframe of documentation but don't have enough installed packages? This section is for you! <code>pip_top_n</code> function is able to pip top <strong>n</strong> popular packages from <a href="https://hugovk.github.io/top-pypi-packages/">this website</a>. For example, let's pip top 5 pachages:</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">doc_collection.core</span> <span class="kn">import</span> <span class="n">pip_top_n</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pip_top_n</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>boto3 was successfully pipped
+botocore was successfully pipped
+urllib3 was successfully pipped
+setuptools was successfully pipped
+requests was successfully pipped
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Storing">2. Storing<a class="anchor-link" href="#2.-Storing"> </a></h2>
 </div>
 </div>
@@ -457,7 +522,7 @@ nb_path: "index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">doc_collection</span><span class="o">.</span><span class="n">search</span> <span class="kn">import</span> <span class="nn">index_data</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">doc_collection.search</span> <span class="kn">import</span> <span class="n">index_data</span>
 </pre></div>
 
     </div>
