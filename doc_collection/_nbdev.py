@@ -3,8 +3,8 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"replace": "00_core.ipynb",
-         "get_top_hundred": "00_core.ipynb",
-         "pip_top_hundred": "00_core.ipynb",
+         "get_top_n": "00_core.ipynb",
+         "pip_top_n": "00_core.ipynb",
          "val": "00_core.ipynb",
          "extr": "00_core.ipynb",
          "recclass": "00_core.ipynb",
